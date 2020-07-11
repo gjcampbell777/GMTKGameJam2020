@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public float speed;
-
+    
+    private float speed;
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    	speed = Random.Range(3.0f, 8.0f);
     }
 
     void FixedUpdate()
