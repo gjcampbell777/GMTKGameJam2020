@@ -108,9 +108,9 @@ public class GMScript : MonoBehaviour
     		enemyTime = 0.0f;
     	}
 
-    	if(GameObject.FindWithTag("Enemy") == null)
+    	if(GameObject.FindWithTag("Enemy") == null && enemySpawnTime - enemyTime > 3.0f)
     	{
-    		enemySpawnTime = Random.Range(1.0f, 3.0f);
+    		enemySpawnTime = enemyTime + Random.Range(1.0f, 3.0f);
     	}
 
     }
