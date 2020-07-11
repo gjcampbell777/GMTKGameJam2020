@@ -28,7 +28,9 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetButton("Fire1") && myTime > nextFire)
         {
         	nextFire = myTime + 0.5f;
-        	Instantiate(bullet, transform.position, Quaternion.Euler(0,0,Random.Range(0.0f, 360.0f)));
+        	GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0,0,Random.Range(0.0f, 360.0f)));
+    		float scaleChange = Random.Range(0.5f, 1.5f);
+    		newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
         	nextFire = nextFire - myTime;
             myTime = 0.0f;
         }
