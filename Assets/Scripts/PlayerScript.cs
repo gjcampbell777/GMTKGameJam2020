@@ -28,9 +28,7 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetButton("Fire1") && myTime > nextFire)
         {
         	nextFire = myTime + 0.5f;
-        	GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0,0,Random.Range(0.0f, 360.0f)));
-    		float scaleChange = Random.Range(0.5f, 1.5f);
-    		newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+        	GunFire(Random.Range(0.0f, 360.0f));
         	nextFire = nextFire - myTime;
             myTime = 0.0f;
         }
@@ -59,6 +57,71 @@ public class PlayerScript : MonoBehaviour
    			Destroy(gameObject);
    		}
        
+   }
+
+   void GunFire(float aim)
+   {
+
+   		int gunSelect = Random.Range(0,4);
+   		GameObject newBullet;
+   		float scaleChange = 1.0f;
+   		Vector3 pos = PlayerCircle(transform.position);
+   		Quaternion rot = Quaternion.FromToRotation(Vector3.down, transform.position-pos);
+
+   		switch(gunSelect)
+   		{
+
+   			//pistol
+   			case 0:
+   				newBullet = Instantiate(bullet, pos, rot);
+    			scaleChange = Random.Range(0.5f, 1.5f);
+    			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+   				break;
+   			//shotgun
+   			case 1:
+   				newBullet = Instantiate(bullet, pos, rot);
+    			scaleChange = Random.Range(0.5f, 1.5f);
+    			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+    			newBullet = Instantiate(bullet, pos+((Vector3.up+Vector3.right)*0.75f), Quaternion.FromToRotation(Vector3.down, transform.position-(pos+((Vector3.up+Vector3.right)*0.75f))));
+    			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+    			newBullet = Instantiate(bullet, pos+((Vector3.down+Vector3.left)*0.75f), Quaternion.FromToRotation(Vector3.down, transform.position-(pos+((Vector3.down+Vector3.left)*0.75f))));
+    			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+   				break;
+   			//machinegun
+   			case 2:
+   				newBullet = Instantiate(bullet, pos, rot);
+    			scaleChange = Random.Range(0.5f, 1.5f);
+    			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+    			for(int i = 1 ; i < 5; i++)
+    			{
+    				newBullet = Instantiate(bullet, pos+(Vector3.down+Vector3.left)*(0.1f*i), Quaternion.FromToRotation(Vector3.down, transform.position-(pos+(Vector3.down+Vector3.left)*(0.1f*i))));
+    				newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+    			}
+   				break;
+   			//railgun
+   			case 3:
+    			scaleChange = Random.Range(0.5f, 1.5f);
+    			for(int i = 0 ; i < 100; i++)
+    			{
+    				newBullet = Instantiate(bullet, pos, rot);
+    				newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+    			}
+   				break;
+
+   		}
+
+   		Vector3 PlayerCircle (Vector3 center){
+        	float radius = 1.25f;
+        	float ang = Random.value * 360;
+        	Vector3 circle;
+
+	        circle.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+	        circle.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+	        circle.z = 0;
+         
+        	return circle;
+	    }
+
    }
 
 }

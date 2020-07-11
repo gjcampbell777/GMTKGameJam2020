@@ -24,20 +24,14 @@ public class BulletScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
    
-   		if(other.gameObject.tag != "Player")
+   		if(other.gameObject.tag != "Player" && other.gameObject.tag != "Bullet")
    		{
    			Destroy(gameObject);
-   		}
-
-   		if(other.gameObject.tag == "Player")
-   		{
-   			Physics2D.IgnoreCollision(
-   				other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
    		}
        
     }
 
-   void OnBecameInvisible() 
+   	void OnBecameInvisible() 
     {
    		Destroy(gameObject);
     }

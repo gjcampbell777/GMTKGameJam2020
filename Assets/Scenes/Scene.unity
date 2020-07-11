@@ -396,6 +396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Down
       objectReference: {fileID: 0}
+    - target: {fileID: 6511841225854600656, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5726703938094994942, guid: 839e7f2e94b70514dbc986f93edcae38, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 839e7f2e94b70514dbc986f93edcae38, type: 3}
@@ -476,6 +481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511841225854600656, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5726703938094994942, guid: 839e7f2e94b70514dbc986f93edcae38, type: 3}
@@ -609,6 +619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Up
       objectReference: {fileID: 0}
+    - target: {fileID: 6511841225854600656, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5726703938094994942, guid: 839e7f2e94b70514dbc986f93edcae38, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 839e7f2e94b70514dbc986f93edcae38, type: 3}
@@ -689,6 +704,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511841225854600656, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5726703938094994942, guid: 839e7f2e94b70514dbc986f93edcae38, type: 3}
