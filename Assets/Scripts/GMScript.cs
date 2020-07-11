@@ -17,6 +17,10 @@ public class GMScript : MonoBehaviour
     private Transform playerPos;
     private Text score;
     private Text timer;
+    private Text gameOver;
+    private Text newHighScore;
+    private Text restartPrompt;
+    private Text highScore;
 
 	void Start()
 	{
@@ -26,6 +30,10 @@ public class GMScript : MonoBehaviour
 		enemySpawnTime = Random.Range(5.0f, 15.0f);
 		score = GameObject.Find("Score").GetComponent<Text>();
 		timer = GameObject.Find("Timer").GetComponent<Text>();
+		gameOver = GameObject.Find("Game Over").GetComponent<Text>();
+		newHighScore = GameObject.Find("New High Score?").GetComponent<Text>();
+		restartPrompt = GameObject.Find("Restart Prompt").GetComponent<Text>();
+		highScore = GameObject.Find("High Score").GetComponent<Text>();
 
 	}
 
@@ -42,7 +50,33 @@ public class GMScript : MonoBehaviour
 
     	if(GameObject.FindWithTag("Player") != null)
     	{
+
     		playerPos = GameObject.FindWithTag("Player").transform;
+    	
+    	} else {
+
+    		gameOver.text = "Game Over!";
+    		restartPrompt.text = "Press 'R' to \n try again!";
+
+    		if(PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("HighScore")
+    			|| (PlayerPrefs.GetInt("Score") == PlayerPrefs.GetInt("HighScore")
+    				&& time > PlayerPrefs.GetFloat("HighTime")))
+    		{
+
+    			newHighScore.text = "New High Score!";
+
+    			PlayerPrefs.SetInt("HighScore", PlayerPrefs.GetInt("Score"));
+    			PlayerPrefs.SetFloat("HighTime", time);
+
+    		}
+
+    		highScore.text = "High Score:\n Score: " 
+    		+ PlayerPrefs.GetInt("HighScore") 
+    		+ "\n Time: " + PlayerPrefs.GetFloat("HighTime").ToString("F1");
+
+    		PlayerPrefs.SetInt("Score", 0);
+    		time = 0.0f;
+
     	}
         
     	if(obstacleTime > obstacleSpawnTime)
