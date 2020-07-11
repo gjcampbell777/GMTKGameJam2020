@@ -16,6 +16,7 @@ public class GMScript : MonoBehaviour
     private float time = 0.0f;
     private Transform playerPos;
     private Text score;
+    private Text timer;
 
 	void Start()
 	{
@@ -24,6 +25,7 @@ public class GMScript : MonoBehaviour
 		obstacleSpawnTime = Random.Range(5.0f, 15.0f);
 		enemySpawnTime = Random.Range(5.0f, 15.0f);
 		score = GameObject.Find("Score").GetComponent<Text>();
+		timer = GameObject.Find("Timer").GetComponent<Text>();
 
 	}
 
@@ -31,16 +33,17 @@ public class GMScript : MonoBehaviour
     void Update()
     {
 
+    	time += Time.deltaTime;
+    	obstacleTime += Time.deltaTime;
+    	enemyTime += Time.deltaTime;
+
     	score.text = "Score: " + PlayerPrefs.GetInt("Score");
+    	timer.text = "Time: " + time.ToString("F1");
 
     	if(GameObject.FindWithTag("Player") != null)
     	{
     		playerPos = GameObject.FindWithTag("Player").transform;
     	}
-
-    	time += Time.deltaTime;
-    	obstacleTime += Time.deltaTime;
-    	enemyTime += Time.deltaTime;
         
     	if(obstacleTime > obstacleSpawnTime)
     	{
