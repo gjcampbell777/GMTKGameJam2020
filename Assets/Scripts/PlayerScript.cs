@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
 	private int life = 3;
 	private float translation;
     private float rotation;
-    private float nextFire = 0.5f;
+    private float nextFire = 0.0f;
     private float myTime = 0.0f;
     private GameObject reloaded;
 	private Rigidbody2D rb;
@@ -35,9 +35,8 @@ public class PlayerScript : MonoBehaviour
 
         if(Input.GetButton("Fire1") && myTime > nextFire)
         {
-        	nextFire = myTime + 0.5f;
         	GunFire();
-        	nextFire = nextFire - myTime;
+        	nextFire = Random.Range(0.0f, 2.0f);
             myTime = 0.0f;
         }
 
