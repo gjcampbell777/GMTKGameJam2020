@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GMScript : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class GMScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    	if (Input.GetKeyDown("r")) { 
+        	SceneManager.LoadScene("Scene"); 
+     	}
 
     	time += Time.deltaTime;
     	obstacleTime += Time.deltaTime;
