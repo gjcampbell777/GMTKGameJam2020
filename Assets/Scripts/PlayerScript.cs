@@ -6,9 +6,9 @@ public class PlayerScript : MonoBehaviour
 {
     
 	public float speed;
-
 	public GameObject bullet;
 
+	private int life = 3;
 	private float translation;
     private float rotation;
     private float nextFire = 0.5f;
@@ -36,9 +36,14 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetButton("Fire1") && myTime > nextFire)
         {
         	nextFire = myTime + 0.5f;
-        	GunFire(Random.Range(0.0f, 360.0f));
+        	GunFire();
         	nextFire = nextFire - myTime;
             myTime = 0.0f;
+        }
+
+        if(life <= 0)
+        {
+        	Destroy(gameObject);
         }
 
     }
@@ -62,12 +67,14 @@ public class PlayerScript : MonoBehaviour
 
    		if(other.gameObject.tag == "Enemy")
    		{
-   			Destroy(gameObject);
+   			life--;
+
+        	Destroy(GameObject.FindWithTag("Life"));
    		}
        
    }
 
-   void GunFire(float aim)
+   void GunFire()
    {
 
    		int gunSelect = 0;
