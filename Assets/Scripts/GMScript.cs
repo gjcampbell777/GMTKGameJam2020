@@ -46,7 +46,11 @@ public class GMScript : MonoBehaviour
     {
 
     	if (Input.GetKeyDown("r")) { 
-        	SceneManager.LoadScene("Scene"); 
+        	SceneManager.LoadScene("Game"); 
+     	}
+
+     	if (Input.GetKeyDown(KeyCode.Escape)) { 
+        	SceneManager.LoadScene("Main Menu"); 
      	}
 
     	if(GameObject.FindWithTag("Player") != null)
