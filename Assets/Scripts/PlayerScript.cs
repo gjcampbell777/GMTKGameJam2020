@@ -13,17 +13,25 @@ public class PlayerScript : MonoBehaviour
     private float rotation;
     private float nextFire = 0.5f;
     private float myTime = 0.0f;
+    private GameObject reloaded;
 	private Rigidbody2D rb;
 
 	void Awake()
 	{
 		rb = this.GetComponent<Rigidbody2D>();
+		reloaded = GameObject.Find("Reloaded");
 	}
 
     void Update()
     {
      
+     	reloaded.SetActive(false);
      	myTime += Time.deltaTime;
+
+     	if(myTime > nextFire)
+     	{
+     		reloaded.SetActive(true);
+     	}
 
         if(Input.GetButton("Fire1") && myTime > nextFire)
         {
@@ -62,11 +70,18 @@ public class PlayerScript : MonoBehaviour
    void GunFire(float aim)
    {
 
-   		int gunSelect = Random.Range(0,4);
+   		int gunSelect = 0;
    		GameObject newBullet;
    		float scaleChange = 1.0f;
    		Vector3 pos = PlayerCircle(transform.position);
    		Quaternion rot = Quaternion.FromToRotation(Vector3.down, transform.position-pos);
+
+   		if(Random.Range(0,10) == 0)
+   		{
+
+   			gunSelect = Random.Range(1,4);
+
+   		}
 
    		switch(gunSelect)
    		{
