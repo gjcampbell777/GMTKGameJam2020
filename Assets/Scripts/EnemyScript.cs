@@ -29,7 +29,13 @@ public class EnemyScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
    {
 
-   		if(other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
+   		if(other.gameObject.tag == "Bullet")
+   		{
+   			PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score")+1);
+   			Destroy(gameObject);
+   		}
+
+   		if(other.gameObject.tag == "Player")
    		{
    			Destroy(gameObject);
    		}

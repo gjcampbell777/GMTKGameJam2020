@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GMScript : MonoBehaviour
 {
@@ -12,14 +13,17 @@ public class GMScript : MonoBehaviour
     private float obstacleTime = 0.0f;
     private float enemySpawnTime;
     private float enemyTime = 0.0f;
-
+    private float time = 0.0f;
     private Transform playerPos;
+    private Text score;
 
 	void Start()
 	{
 
+		PlayerPrefs.SetInt("Score", 0);
 		obstacleSpawnTime = Random.Range(5.0f, 15.0f);
 		enemySpawnTime = Random.Range(5.0f, 15.0f);
+		score = GameObject.Find("Score").GetComponent<Text>();
 
 	}
 
@@ -27,11 +31,14 @@ public class GMScript : MonoBehaviour
     void Update()
     {
 
+    	score.text = "Score: " + PlayerPrefs.GetInt("Score");
+
     	if(GameObject.FindWithTag("Player") != null)
     	{
     		playerPos = GameObject.FindWithTag("Player").transform;
     	}
 
+    	time += Time.deltaTime;
     	obstacleTime += Time.deltaTime;
     	enemyTime += Time.deltaTime;
         
