@@ -23,6 +23,7 @@ public class GMScript : MonoBehaviour
     private Text newHighScore;
     private Text restartPrompt;
     private Text highScore;
+    private Text escapePrompt;
 
 	void Start()
 	{
@@ -36,6 +37,7 @@ public class GMScript : MonoBehaviour
 		newHighScore = GameObject.Find("New High Score?").GetComponent<Text>();
 		restartPrompt = GameObject.Find("Restart Prompt").GetComponent<Text>();
 		highScore = GameObject.Find("High Score").GetComponent<Text>();
+		escapePrompt = GameObject.Find("Escape Prompt").GetComponent<Text>();
 
 	}
 
@@ -62,6 +64,7 @@ public class GMScript : MonoBehaviour
     		timer.text = "Time: " + gameOverTime.ToString("F1");
     		gameOver.text = "Game Over!";
     		restartPrompt.text = "Press 'R' to \n try again!";
+    		escapePrompt.text = "Hit 'esc' to return to the main menu";
 
     		if(PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("HighScore")
     			|| (PlayerPrefs.GetInt("Score") == PlayerPrefs.GetInt("HighScore")
