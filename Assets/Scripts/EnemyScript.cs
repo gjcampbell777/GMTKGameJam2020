@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     
-    public float speed;
-
+    private float speed;
  	private GameObject player;
 
  	void Start()
  	{
  		player = GameObject.FindWithTag("Player");
+ 		speed = Random.Range(0.5f, 3.0f);
  	}
 
     // Update is called once per frame
