@@ -15,6 +15,7 @@ public class GMScript : MonoBehaviour
     private float enemySpawnTime;
     private float enemyTime = 0.0f;
     private float time = 0.0f;
+    private float gameOverTime;
     private Transform playerPos;
     private Text score;
     private Text timer;
@@ -27,8 +28,8 @@ public class GMScript : MonoBehaviour
 	{
 
 		PlayerPrefs.SetInt("Score", 0);
-		obstacleSpawnTime = Random.Range(5.0f, 15.0f);
-		enemySpawnTime = Random.Range(5.0f, 15.0f);
+		obstacleSpawnTime = Random.Range(5.0f, 10.0f);
+		enemySpawnTime = Random.Range(5.0f, 10.0f);
 		score = GameObject.Find("Score").GetComponent<Text>();
 		timer = GameObject.Find("Timer").GetComponent<Text>();
 		gameOver = GameObject.Find("Game Over").GetComponent<Text>();
@@ -46,32 +47,31 @@ public class GMScript : MonoBehaviour
         	SceneManager.LoadScene("Scene"); 
      	}
 
-    	time += Time.deltaTime;
-    	obstacleTime += Time.deltaTime;
-    	enemyTime += Time.deltaTime;
-
-    	score.text = "Score: " + PlayerPrefs.GetInt("Score");
-    	timer.text = "Time: " + time.ToString("F1");
-
     	if(GameObject.FindWithTag("Player") != null)
     	{
+
+    		time += Time.deltaTime;
+	    	obstacleTime += Time.deltaTime;
+	    	enemyTime += Time.deltaTime;
 
     		playerPos = GameObject.FindWithTag("Player").transform;
     	
     	} else {
 
+    		gameOverTime = time;
+    		timer.text = "Time: " + gameOverTime.ToString("F1");
     		gameOver.text = "Game Over!";
     		restartPrompt.text = "Press 'R' to \n try again!";
 
     		if(PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("HighScore")
     			|| (PlayerPrefs.GetInt("Score") == PlayerPrefs.GetInt("HighScore")
-    				&& time > PlayerPrefs.GetFloat("HighTime")))
+    				&& gameOverTime > PlayerPrefs.GetFloat("HighTime")))
     		{
 
     			newHighScore.text = "New High Score!";
 
     			PlayerPrefs.SetInt("HighScore", PlayerPrefs.GetInt("Score"));
-    			PlayerPrefs.SetFloat("HighTime", time);
+    			PlayerPrefs.SetFloat("HighTime", gameOverTime);
 
     		}
 
@@ -79,10 +79,10 @@ public class GMScript : MonoBehaviour
     		+ PlayerPrefs.GetInt("HighScore") 
     		+ "\n Time: " + PlayerPrefs.GetFloat("HighTime").ToString("F1");
 
-    		PlayerPrefs.SetInt("Score", 0);
-    		time = 0.0f;
-
     	}
+
+    	score.text = "Score: " + PlayerPrefs.GetInt("Score");
+    	timer.text = "Time: " + time.ToString("F1");
         
     	if(obstacleTime > obstacleSpawnTime)
     	{
@@ -90,7 +90,7 @@ public class GMScript : MonoBehaviour
     		GameObject newObstacle = Instantiate(obstacle, ValidSpawn(), 
     			Quaternion.Euler(0,0,Random.Range(0.0f, 360.0f)));
     		newObstacle.transform.localScale = new Vector2(Random.Range(1.0f, 8.0f), 1.0f);
-    		obstacleSpawnTime = Random.Range(5.0f, 15.0f);
+    		obstacleSpawnTime = spawnTime();
     		obstacleTime = 0.0f;
     	}
 
@@ -101,9 +101,34 @@ public class GMScript : MonoBehaviour
     			Quaternion.identity);
     		float scaleChange = Random.Range(0.5f, 1.5f);
     		newEnemy.transform.localScale = new Vector2(scaleChange, scaleChange);
-    		enemySpawnTime = Random.Range(5.0f, 15.0f);
+    		enemySpawnTime = spawnTime();
     		enemyTime = 0.0f;
     	}
+
+    	if(GameObject.FindWithTag("Enemy") == null)
+    	{
+    		enemySpawnTime = Random.Range(1.0f, 3.0f);
+    	}
+
+    }
+
+    float spawnTime()
+    {
+
+
+    	if((PlayerPrefs.GetInt("Score") > 3 && PlayerPrefs.GetInt("Score") < 7)
+    		|| (time > 30.0f && time < 45.0f))
+    	{
+
+    		return Random.Range(3.0f, 8.0f);
+
+		} else if (PlayerPrefs.GetInt("Score") >= 7 || time >= 45.0f){
+
+			return Random.Range(3.0f, 5.0f);
+
+		}
+
+    	return Random.Range(5.0f, 10.0f);
 
     }
 

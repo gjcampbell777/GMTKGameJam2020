@@ -88,7 +88,7 @@ public class PlayerScript : MonoBehaviour
    		Vector3 pos = PlayerCircle(transform.position);
    		Quaternion rot = Quaternion.FromToRotation(Vector3.down, transform.position-pos);
 
-   		if(Random.Range(0,10) == 0)
+   		if(Random.Range(0,8) == 0)
    		{
 
    			gunSelect = Random.Range(1,4);

@@ -11,7 +11,7 @@ public class ObsctaleScript : MonoBehaviour
 	void Start()
 	{
 
-		deathTime = Random.Range(5.0f, 15.0f);
+		deathTime = Random.Range(10.0f, 15.0f);
 
 	}
 
