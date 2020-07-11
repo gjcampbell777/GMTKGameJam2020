@@ -18,7 +18,6 @@ public class GMScript : MonoBehaviour
 	void Start()
 	{
 
-		playerPos = GameObject.FindWithTag("Player").transform;
 		obstacleSpawnTime = Random.Range(5.0f, 15.0f);
 		enemySpawnTime = Random.Range(5.0f, 15.0f);
 
@@ -28,13 +27,18 @@ public class GMScript : MonoBehaviour
     void Update()
     {
 
+    	if(GameObject.FindWithTag("Player") != null)
+    	{
+    		playerPos = GameObject.FindWithTag("Player").transform;
+    	}
+
     	obstacleTime += Time.deltaTime;
     	enemyTime += Time.deltaTime;
         
     	if(obstacleTime > obstacleSpawnTime)
     	{
     		
-    		GameObject newObstacle = Instantiate(obstacle, new Vector2(Random.Range(-8.0f, 8.0f), Random.Range(-4.0f, 4.0f)), 
+    		GameObject newObstacle = Instantiate(obstacle, ValidSpawn(), 
     			Quaternion.Euler(0,0,Random.Range(0.0f, 360.0f)));
     		newObstacle.transform.localScale = new Vector2(Random.Range(1.0f, 8.0f), 1.0f);
     		obstacleSpawnTime = Random.Range(5.0f, 15.0f);
@@ -44,7 +48,7 @@ public class GMScript : MonoBehaviour
     	if(enemyTime > enemySpawnTime)
     	{
     		
-    		GameObject newEnemy = Instantiate(enemy, new Vector2(Random.Range(-8.0f, 8.0f), Random.Range(-4.0f, 4.0f)), 
+    		GameObject newEnemy = Instantiate(enemy, ValidSpawn(), 
     			Quaternion.identity);
     		float scaleChange = Random.Range(0.5f, 1.5f);
     		newEnemy.transform.localScale = new Vector2(scaleChange, scaleChange);
@@ -60,14 +64,21 @@ public class GMScript : MonoBehaviour
     	bool valid = false;
     	Vector2 spawn;
 
+    	if(GameObject.FindWithTag("Player") == null)
+    	{
+    		return new Vector2(Random.Range(-8.0f, 8.0f), Random.Range(-4.0f, 4.0f));
+    	}
+
     	do{
 
     		spawn = new Vector2(Random.Range(-8.0f, 8.0f), Random.Range(-4.0f, 4.0f));
 
-    		if((spawn.x > playerPos.position.x + 4 || spawn.x < playerPos.position.x - 4)
-    			&& (spawn.y > playerPos.position.y + 4 || spawn.y < playerPos.position.y - 4))
+    		valid = true;
+
+    		if((spawn.x <= playerPos.position.x + 1 && spawn.x >= playerPos.position.x - 1)
+    			|| (spawn.y <= playerPos.position.y + 1 && spawn.y >= playerPos.position.y - 1))
     		{
-    			valid = true;
+    			valid = false;
     		}
 
     	}while(!valid);
