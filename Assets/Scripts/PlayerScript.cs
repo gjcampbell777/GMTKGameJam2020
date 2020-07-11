@@ -68,7 +68,13 @@ public class PlayerScript : MonoBehaviour
    		{
    			life--;
 
-        	Destroy(GameObject.FindWithTag("Life"));
+   			if(life > 0)
+   			{
+   				Destroy(GameObject.Find("Life ("+life+")"));
+			} else {
+				Destroy(GameObject.Find("Life"));
+			}
+        	
    		}
        
    }
