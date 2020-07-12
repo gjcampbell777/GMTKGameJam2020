@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+	public GameObject particleEffect;
     public AudioClip[] spawnSounds;
     public AudioClip[] defeatSounds;
 
@@ -41,6 +42,7 @@ public class EnemyScript : MonoBehaviour
    			PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score")+1);
        		AudioSource.PlayClipAtPoint(
        			defeatSounds[Random.Range(0,defeatSounds.Length)], new Vector3(0, 0, 0));
+       		Instantiate(particleEffect, transform.position, transform.rotation);
    			Destroy(gameObject);
    		}
 
@@ -48,6 +50,7 @@ public class EnemyScript : MonoBehaviour
    		{
        		AudioSource.PlayClipAtPoint(
        			defeatSounds[Random.Range(0,defeatSounds.Length)], new Vector3(0, 0, 0));
+       		Instantiate(particleEffect, transform.position, transform.rotation);
    			Destroy(gameObject);
    		}
        

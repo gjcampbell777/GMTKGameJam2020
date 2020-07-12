@@ -1831,7 +1831,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 718c7a969c7162c4d9a3371ed7e640e2, type: 3}
   damage:
   - {fileID: 8300000, guid: ce545721254386b41b29192d867663a2, type: 3}
-  reload: {fileID: 8300000, guid: d2710774aabc5664e8fa288d8e1519ea, type: 3}
 --- !u!50 &1990476333
 Rigidbody2D:
   serializedVersion: 4

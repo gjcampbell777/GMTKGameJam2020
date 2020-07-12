@@ -240,6 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbb02e1dc3bc974aa589a68804bca34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleEffect: {fileID: 427686463867823810, guid: a16a22578ccb09e4e94544b7157c3882,
+    type: 3}
   spawnSounds:
   - {fileID: 8300000, guid: 799d65ff7527e3e489d249dd08a956c1, type: 3}
   - {fileID: 8300000, guid: 34a994bf36ad1f34796bc95e5e53cbdb, type: 3}
