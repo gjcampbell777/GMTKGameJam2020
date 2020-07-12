@@ -1822,16 +1822,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2961feedab8e5c343a61790bad7949b1, type: 3}
   - {fileID: 8300000, guid: 04e710af10e4bd94e8eb289b690cd004, type: 3}
   - {fileID: 8300000, guid: e7f74ac85912ae74ebb6a79d65954ab7, type: 3}
-  - {fileID: 8300000, guid: 718c7a969c7162c4d9a3371ed7e640e2, type: 3}
-  - {fileID: 8300000, guid: 8d44d147b421b844c931f21d5778b6b6, type: 3}
-  - {fileID: 8300000, guid: f53aa12ee37973f4fa6a988236dc6ea3, type: 3}
-  - {fileID: 8300000, guid: 0121e097f0a483244a5d614bc592f2fb, type: 3}
+  - {fileID: 8300000, guid: 5d1cd6316de7f214fa32195d9ea32411, type: 3}
   - {fileID: 8300000, guid: 0314b015087ad3246a9211160fac0f3c, type: 3}
-  - {fileID: 8300000, guid: 4ecea409ff0857f4d81d5b22a7a7622e, type: 3}
-  - {fileID: 8300000, guid: 6793f14304f8801499a088954e74a608, type: 3}
-  - {fileID: 8300000, guid: 1528f757c7a9c6f4aac1fb1f6d029790, type: 3}
+  - {fileID: 8300000, guid: 8d44d147b421b844c931f21d5778b6b6, type: 3}
   - {fileID: 8300000, guid: 4c9aa55bb1fa7f14b92c8d0b0d673ad5, type: 3}
-  damage: []
+  - {fileID: 8300000, guid: 4ecea409ff0857f4d81d5b22a7a7622e, type: 3}
+  - {fileID: 8300000, guid: 0121e097f0a483244a5d614bc592f2fb, type: 3}
+  - {fileID: 8300000, guid: 718c7a969c7162c4d9a3371ed7e640e2, type: 3}
+  damage:
+  - {fileID: 8300000, guid: ce545721254386b41b29192d867663a2, type: 3}
+  reload: {fileID: 8300000, guid: d2710774aabc5664e8fa288d8e1519ea, type: 3}
 --- !u!50 &1990476333
 Rigidbody2D:
   serializedVersion: 4

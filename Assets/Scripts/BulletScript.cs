@@ -5,12 +5,17 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     
+	public AudioClip[] hit;
+
     private float speed;
     private Rigidbody2D rb;
     private ShakeScript shake;
 
+    private AudioSource audioSource;
+
     void Start()
     {
+    	audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
     	speed = Random.Range(3.0f, 8.0f);
     	shake = GameObject.Find("Shake Manager").GetComponent<ShakeScript>();
@@ -29,6 +34,8 @@ public class BulletScript : MonoBehaviour
    
    		if(other.gameObject.tag != "Player" && other.gameObject.tag != "Bullet")
    		{
+   			AudioSource.PlayClipAtPoint(
+       			hit[Random.Range(0,hit.Length)], new Vector3(0, 0, 0));
    			Destroy(gameObject);
    		}
        

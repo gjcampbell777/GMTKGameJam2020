@@ -72,6 +72,9 @@ public class PlayerScript : MonoBehaviour
 
    		if(other.gameObject.tag == "Enemy")
    		{
+   			AudioSource.PlayClipAtPoint(
+       			damage[Random.Range(0,damage.Length)], new Vector3(0, 0, 0));
+
    			life--;
 
    			if(life > 0)
