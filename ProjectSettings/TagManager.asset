@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Obstacle
   - Life
+  - Play
+  - Quit
   layers:
   - Default
   - TransparentFX
