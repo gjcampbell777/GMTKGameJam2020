@@ -18,11 +18,14 @@ public class PlayerScript : MonoBehaviour
     private float myTime = 0.0f;
     private GameObject reloaded;
 	private Rigidbody2D rb;
+	private Vector2 movement;
+	private Animator animator;
 
 	private AudioSource audioSource;
 
 	void Awake()
 	{
+		animator = GetComponent<Animator>();
 		audioSource = GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody2D>();
 		reloaded = GameObject.Find("Reloaded");
@@ -30,6 +33,13 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+
+    	movement.x = Input.GetAxis("Horizontal");
+    	movement.y = Input.GetAxis("Vertical");
+
+    	animator.SetFloat("Horizontal", movement.x);
+    	animator.SetFloat("Vertical", movement.y);
+    	animator.SetFloat("Speed", movement.sqrMagnitude);
      
      	reloaded.SetActive(false);
      	myTime += Time.deltaTime;
@@ -42,7 +52,7 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetButton("Fire1") && myTime > nextFire)
         {
         	GunFire();
-        	nextFire = Random.Range(0.0f, 2.0f);
+        	nextFire = Random.Range(0.25f, 2.0f);
             myTime = 0.0f;
         }
 
@@ -56,8 +66,7 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
 
-    	rb.velocity = 
-    	new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
+    	rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
     }
 
