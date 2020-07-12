@@ -661,6 +661,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 459038965}
     m_Modifications:
+    - target: {fileID: 224136594384678653, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f0211b1cbdfe5b74098b7a13bcd17454,
+        type: 3}
     - target: {fileID: 4983368853276173721, guid: 839e7f2e94b70514dbc986f93edcae38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -752,6 +758,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 459038965}
     m_Modifications:
+    - target: {fileID: 224136594384678653, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f0211b1cbdfe5b74098b7a13bcd17454,
+        type: 3}
+    - target: {fileID: 1118292046829645237, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
     - target: {fileID: 4983368853276173721, guid: 839e7f2e94b70514dbc986f93edcae38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1427,6 +1444,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 459038965}
     m_Modifications:
+    - target: {fileID: 224136594384678653, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f0211b1cbdfe5b74098b7a13bcd17454,
+        type: 3}
     - target: {fileID: 4983368853276173721, guid: 839e7f2e94b70514dbc986f93edcae38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1518,6 +1541,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 459038965}
     m_Modifications:
+    - target: {fileID: 224136594384678653, guid: 839e7f2e94b70514dbc986f93edcae38,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f0211b1cbdfe5b74098b7a13bcd17454,
+        type: 3}
     - target: {fileID: 4983368853276173721, guid: 839e7f2e94b70514dbc986f93edcae38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1779,7 +1808,7 @@ SpriteRenderer:
   m_SortingLayerID: -886689981
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: def040baaeb659a43ac54526f73fae70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ffc4352b48185d34c862ad4156b7ec67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

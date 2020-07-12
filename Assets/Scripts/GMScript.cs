@@ -96,7 +96,8 @@ public class GMScript : MonoBehaviour
     		
     		GameObject newObstacle = Instantiate(obstacle, ValidSpawn(), 
     			Quaternion.Euler(0,0,Random.Range(0.0f, 360.0f)));
-    		newObstacle.transform.localScale = new Vector2(Random.Range(1.0f, 8.0f), 1.0f);
+    		SpriteRenderer spriteRenderer = newObstacle.GetComponent<SpriteRenderer>();
+    		spriteRenderer.size = new Vector2(1.28f*Random.Range(1, 9), 1.28f);
     		obstacleSpawnTime = spawnTime();
     		obstacleTime = 0.0f;
     	}
