@@ -8,6 +8,9 @@ public class PlayerScript : MonoBehaviour
 	public float speed;
 	public GameObject bullet;
 
+	public AudioClip[] gunshots;
+	public AudioClip[] damage;
+
 	private int life = 3;
 	private float translation;
     private float rotation;
@@ -16,9 +19,12 @@ public class PlayerScript : MonoBehaviour
     private GameObject reloaded;
 	private Rigidbody2D rb;
 
+	private AudioSource audioSource;
+
 	void Awake()
 	{
-		rb = this.GetComponent<Rigidbody2D>();
+		audioSource = GetComponent<AudioSource>();
+		rb = GetComponent<Rigidbody2D>();
 		reloaded = GameObject.Find("Reloaded");
 	}
 
@@ -103,6 +109,7 @@ public class PlayerScript : MonoBehaviour
    				newBullet = Instantiate(bullet, pos, rot);
     			scaleChange = Random.Range(0.5f, 1.5f);
     			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+    			audioSource.clip = gunshots[Random.Range(0,5)];
    				break;
    			//shotgun
    			case 1:
@@ -113,6 +120,7 @@ public class PlayerScript : MonoBehaviour
     			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
     			newBullet = Instantiate(bullet, pos+((Vector3.down+Vector3.left)*0.75f), Quaternion.FromToRotation(Vector3.down, transform.position-(pos+((Vector3.down+Vector3.left)*0.75f))));
     			newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
+    			audioSource.clip = gunshots[Random.Range(4,8)];
    				break;
    			//machinegun
    			case 2:
@@ -124,6 +132,7 @@ public class PlayerScript : MonoBehaviour
     				newBullet = Instantiate(bullet, pos+(Vector3.down+Vector3.left)*(0.1f*i), Quaternion.FromToRotation(Vector3.down, transform.position-(pos+(Vector3.down+Vector3.left)*(0.1f*i))));
     				newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
     			}
+    			audioSource.clip = gunshots[Random.Range(4,9)];
    				break;
    			//railgun
    			case 3:
@@ -133,22 +142,25 @@ public class PlayerScript : MonoBehaviour
     				newBullet = Instantiate(bullet, pos, rot);
     				newBullet.transform.localScale = new Vector2(scaleChange, scaleChange);
     			}
+    			audioSource.clip = gunshots[Random.Range(8,10)];
    				break;
 
    		}
 
-   		Vector3 PlayerCircle (Vector3 center){
-        	float radius = 1.25f;
-        	float ang = Random.value * 360;
-        	Vector3 circle;
+       	audioSource.Play();
 
-	        circle.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-	        circle.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-	        circle.z = 0;
-         
-        	return circle;
-	    }
+   	}
 
-   }
+	Vector3 PlayerCircle (Vector3 center){
+    	float radius = 1.25f;
+    	float ang = Random.value * 360;
+    	Vector3 circle;
+
+        circle.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+        circle.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+        circle.z = 0;
+     
+    	return circle;
+    }
 
 }
