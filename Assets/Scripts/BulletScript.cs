@@ -7,11 +7,14 @@ public class BulletScript : MonoBehaviour
     
     private float speed;
     private Rigidbody2D rb;
+    private ShakeScript shake;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     	speed = Random.Range(3.0f, 8.0f);
+    	shake = GameObject.Find("Shake Manager").GetComponent<ShakeScript>();
+    	shake.CamShake();
     }
 
     void FixedUpdate()
