@@ -10,11 +10,16 @@ public class EnemyScript : MonoBehaviour
 
     private float speed;
  	private GameObject player;
+ 	private Vector2 movement;
+ 	private Rigidbody2D rb;
+	private Animator animator;
 
  	private AudioSource audioSource;
 
  	void Start()
  	{
+ 		rb = GetComponent<Rigidbody2D>();
+ 		animator = GetComponent<Animator>();
  		audioSource = GetComponent<AudioSource>();
  		player = GameObject.FindWithTag("Player");
  		speed = Random.Range(0.5f, 3.0f);
@@ -25,12 +30,18 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    	movement = rb.velocity;
         
     	if(player != null)
     	{
     		transform.position = Vector2.MoveTowards(
     			transform.position, player.transform.position, speed * Time.deltaTime);
     	}
+
+    	animator.SetFloat("Horizontal", movement.x);
+    	animator.SetFloat("Vertical", movement.y);
+    	animator.SetBool("Speed", true);
 
     }
 
@@ -53,6 +64,8 @@ public class EnemyScript : MonoBehaviour
        		Instantiate(particleEffect, transform.position, transform.rotation);
    			Destroy(gameObject);
    		}
+
+   		animator.SetBool("Speed", false);
        
    }
 }

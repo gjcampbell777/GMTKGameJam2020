@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3604935524688938201}
   - component: {fileID: 6741981845749859313}
   - component: {fileID: 1614877917231671591}
+  - component: {fileID: 4975189688172107786}
   - component: {fileID: 6716227068369250423}
   - component: {fileID: 917023915065383399}
   m_Layer: 0
@@ -154,6 +155,25 @@ PolygonCollider2D:
       - {x: 0.39, y: -0.64}
       - {x: 0.44, y: -0.62}
       - {x: 0.39999998, y: -0.47}
+--- !u!95 &4975189688172107786
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604935524688938200}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52b962f9bb906414ba05d6c79b76f47c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &6716227068369250423
 AudioSource:
   m_ObjectHideFlags: 0
