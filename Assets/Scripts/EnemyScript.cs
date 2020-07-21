@@ -16,6 +16,9 @@ public class EnemyScript : MonoBehaviour
 
  	private AudioSource audioSource;
 
+  private Vector3 previousPosition;
+  private Vector3 currentMovementDirection;
+
  	void Start()
  	{
  		rb = GetComponent<Rigidbody2D>();
@@ -39,8 +42,13 @@ public class EnemyScript : MonoBehaviour
     			transform.position, player.transform.position, speed * Time.deltaTime);
     	}
 
-    	animator.SetFloat("Horizontal", movement.x);
-    	animator.SetFloat("Vertical", movement.y);
+      if(previousPosition != transform.position) {
+        currentMovementDirection = (transform.position - previousPosition);
+        previousPosition = transform.position;
+      }
+
+    	animator.SetFloat("Horizontal", currentMovementDirection.y);
+    	animator.SetFloat("Vertical", currentMovementDirection.x);
     	animator.SetBool("Speed", true);
 
     }
