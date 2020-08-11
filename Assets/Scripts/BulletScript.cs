@@ -7,6 +7,8 @@ public class BulletScript : MonoBehaviour
     
 	public AudioClip[] hit;
 
+    public Sprite secret;
+
     private float speed;
     private Rigidbody2D rb;
     private ShakeScript shake;
@@ -20,6 +22,9 @@ public class BulletScript : MonoBehaviour
     	speed = Random.Range(3.0f, 8.0f);
     	shake = GameObject.Find("Shake Manager").GetComponent<ShakeScript>();
     	shake.CamShake();
+
+      if(Random.Range(0, 100) == 0) this.GetComponent<SpriteRenderer>().sprite = secret;
+
     }
 
     void FixedUpdate()
